@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HomeCare - Household Services</title>
+
+    <style>
+
+        /* ==============================
+           RESET & GENERAL
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f7f6;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        /* ==============================
+           HEADER
+        ============================== */
+
+        .header {
+            background: linear-gradient(135deg, #00695c, #009688);
+            color: white;
+            padding: 45px 25px;
+            text-align: center;
+            border-radius: 18px 18px 0 0;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 18px;
+        }
+
+        .header .tagline {
+            margin-top: 12px;
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        /* ==============================
+           INTRODUCTION
+        ============================== */
+
+        .intro {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .intro h2 {
+            color: #00695c;
+            margin-bottom: 12px;
+        }
+
+        .intro p {
+            max-width: 800px;
+            margin: 8px auto;
+        }
+
+        .highlight {
+            color: #00897b;
+            font-weight: bold;
+        }
+
+        /* ==============================
+           SERVICE CARDS
+        ============================== */
+
+        .services {
+            background: white;
+            padding: 30px;
+        }
+
+        .services h2 {
+            text-align: center;
+            color: #00695c;
+            margin-bottom: 25px;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .service-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            background: #fafafa;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #009688;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-card .icon {
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+
+        .service-card h3 {
+            color: #00695c;
+            margin-bottom: 5px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* ==============================
+           FORM CONTAINER
+        ============================== */
+
+        .form-section {
+            background: white;
+            margin-top: 20px;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-title {
+            text-align: center;
+            color: #00695c;
+            margin-bottom: 8px;
+            font-size: 30px;
+        }
+
+        .form-description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* ==============================
+           FORM SECTIONS
+        ============================== */
+
+        .form-box {
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .form-box h3 {
+            color: #00695c;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0f2f1;
+            padding-bottom: 10px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-row.three {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+            color: #333;
+        }
+
+        .required {
+            color: #d32f2f;
+        }
+
+        /* ==============================
+           INPUTS
+        ============================== */
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+            font-family: inherit;
+            background: #fafafa;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #00897b;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0, 137, 123, 0.12);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* ==============================
+           RADIO & CHECKBOX
+        ============================== */
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 13px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            background: #fafafa;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .option:hover {
+            background: #e0f2f1;
+            border-color: #009688;
+        }
+
+        .option input {
+            width: auto;
+            accent-color: #00897b;
+        }
+
+        /* ==============================
+           SERVICE TABLE
+        ============================== */
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th {
+            background: #00695c;
+            color: white;
+            padding: 14px;
+        }
+
+        td {
+            padding: 13px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f5fafa;
+        }
+
+        tbody tr:hover {
+            background: #e0f2f1;
+        }
+
+        /* ==============================
+           TERMS
+        ============================== */
+
+        .terms {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .terms input {
+            width: auto;
+            margin-top: 5px;
+            accent-color: #00897b;
+        }
+
+        .terms label {
+            font-weight: normal;
+            font-size: 14px;
+        }
+
+        /* ==============================
+           BUTTONS
+        ============================== */
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 13px 35px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn {
+            background: #00897b;
+            color: white;
+        }
+
+        .submit-btn:hover {
+            background: #00695c;
+            transform: translateY(-2px);
+        }
+
+        .reset-btn {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .reset-btn:hover {
+            background: #bdbdbd;
+        }
+
+        /* ==============================
+           PAYMENT
+        ============================== */
+
+        .payment {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .payment a {
+            display: inline-block;
+            background: #1565c0;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .payment a:hover {
+            background: #0d47a1;
+            transform: translateY(-2px);
+        }
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 20px;
+            border-radius: 0 0 18px 18px;
+        }
+
+        footer p {
+            margin: 5px;
+            font-size: 14px;
+        }
+
+        /* ==============================
+           RESPONSIVE DESIGN
+        ============================== */
+
+        @media (max-width: 850px) {
+
+            .service-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-row.three {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .container {
+                width: 96%;
+                margin: 15px auto;
+            }
+
+            .header {
+                padding: 30px 15px;
+            }
+
+            .header h1 {
+                font-size: 30px;
+            }
+
+            .header p {
+                font-size: 15px;
+            }
+
+            .intro,
+            .services,
+            .form-section {
+                padding: 20px;
+            }
+
+            .service-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row,
+            .form-row.three,
+            .options {
+                grid-template-columns: 1fr;
+            }
+
+            .form-box {
+                padding: 18px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            th,
+            td {
+                padding: 9px 6px;
+                font-size: 13px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <!-- =================================
+         HEADER
+    ================================== -->
+
+    <header class="header">
+
+        <h1>🏠 HomeCare Services</h1>
+
+        <p>
+            Professional Household Services at Your Doorstep
+        </p>
+
+        <p class="tagline">
+            Safe • Reliable • Affordable • Convenient
+        </p>
+
+    </header>
+
+
+    <!-- =================================
+         INTRODUCTION
+    ================================== -->
+
+    <section class="intro">
+
+        <h2>Welcome to HomeCare Services</h2>
+
+        <p>
+            We provide reliable and professional household services
+            according to your requirements. Our trained service providers
+            are available for different household activities.
+        </p>
+
+        <p class="highlight">
+            Book the service you need and get professional assistance
+            at your doorstep.
+        </p>
+
+    </section>
+
+
+    <!-- =================================
+         SERVICES
+    ================================== -->
+
+    <section class="services">
+
+        <h2>Our Popular Services</h2>
+
+        <div class="service-cards">
+
+            <div class="service-card">
+
+                <div class="icon">👕</div>
+
+                <h3>Clothing</h3>
+
+                <p>
+                    Washing, ironing and basic clothing assistance.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="icon">👩‍⚕️</div>
+
+                <h3>Nursing</h3>
+
+                <p>
+                    Basic home nursing and elderly care assistance.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="icon">🍽️</div>
+
+                <h3>Catering</h3>
+
+                <p>
+                    Food preparation and catering services.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="icon">🎉</div>
+
+                <h3>Decoration</h3>
+
+                <p>
+                    Decoration services for homes and small events.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         FORM
+    ================================== -->
+
+    <section class="form-section">
+
+        <h2 class="form-title">
+            Service Booking Form
+        </h2>
+
+        <p class="form-description">
+            Please provide the following details to book your household service.
+        </p>
+
+
+        <form>
+
+
+            <!-- =================================
+                 PERSONAL DETAILS
+            ================================== -->
+
+            <div class="form-box">
+
+                <h3>👤 Personal Information</h3>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            maxlength="50"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Mobile Number <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter 10-digit mobile number"
+                            pattern="[0-9]{10}"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="example@email.com"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="age">
+                            Age
+                        </label>
+
+                        <input
+                            type="number"
+                            id="age"
+                            name="age"
+                            min="18"
+                            max="100"
+                            placeholder="Enter your age"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 ADDRESS
+            ================================== -->
+
+            <div class="form-box">
+
+                <h3>📍 Address Information</h3>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="city">
+                            City <span class="required">*</span>
+                        </label>
+
+                        <select id="city" name="city" required>
+
+                            <option value="">
+                                -- Select City --
+                            </option>
+
+                            <option>Mumbai</option>
+                            <option>Navi Mumbai</option>
+                            <option>Thane</option>
+                            <option>Dombivli</option>
+                            <option>Kalyan</option>
+                            <option>Ulhasnagar</option>
+                            <option>Ambernath</option>
+                            <option>Badlapur</option>
+                            <option>Pune</option>
+                            <option>Nashik</option>
+                            <option>Nagpur</option>
+                            <option>Solapur</option>
+                            <option>Kolhapur</option>
+                            <option>Aurangabad</option>
+                            <option>Satara</option>
+                            <option>Sangli</option>
+                            <option>Ahmednagar</option>
+                            <option>Ratnagiri</option>
+                            <option>Other</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="pincode">
+                            Pincode <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="pincode"
+                            name="pincode"
+                            placeholder="Enter 6-digit pincode"
+                            pattern="[0-9]{6}"
+                            maxlength="6"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="address">
+                            Complete Address <span class="required">*</span>
+                        </label>
+
+                        <textarea
+                            id="address"
+                            name="address"
+                            placeholder="House / Flat No., Building, Street, Area..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 SERVICE DETAILS
+            ================================== -->
+
+            <div class="form-box">
+
+                <h3>🛠️ Service Requirements</h3>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Select Services <span class="required">*</span>
+                    </label>
+
+                    <div class="options">
+
+                        <label class="option">
+
+                            <input
+                                type="checkbox"
+                                name="service"
+                                value="Clothing"
+                            >
+
+                            Clothing / Laundry
+
+                        </label>
+
+
+                        <label class="option">
+
+                            <input
+                                type="checkbox"
+                                name="service"
+                                value="Nursing"
+                            >
+
+                            Nursing / Elderly Care
+
+                        </label>
+
+
+                        <label class="option">
+
+                            <input
+                                type="checkbox"
+                                name="service"
+                                value="Catering"
+                            >
+
+                            Catering / Cooking
+
+                        </label>
+
+
+                        <label class="option">
+
+                            <input
+                                type="checkbox"
+                                name="service"
+                                value="Decoration"
+                            >
+
+                            Decoration
+
+                        </label>
+
+
+                        <label class="option">
+
+                            <input
+                                type="checkbox"
+                                name="service"
+                                value="Cleaning"
+                            >
+
+                            Home Cleaning
+
+                        </label>
+
+
+                        <label class="option">
+
+                            <input
+                                type="checkbox"
+                                name="service"
+                                value="Plumbing"
+                            >
+
+                            Plumbing
+
+                        </label>
+
+
+                        <label class="option">
+
+                            <input
+                                type="checkbox"
+                                name="service"
+                                value="Electrical"
+                            >
+
+                            Electrical Work
+
+                        </label>
+
+
+                        <label class="option">
+
+                            <input
+                                type="checkbox"
+                                name="service"
+                                value="Other"
+                            >
+
+                            Other Service
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="work">
+                            Describe Required Work
+                        </label>
+
+                        <input
+                            type="text"
+                            id="work"
+                            name="work"
+                            placeholder="Example: Full home cleaning"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="people">
+                            Number of People
+                        </label>
+
+                        <input
+                            type="number"
+                            id="people"
+                            name="people"
+                            min="1"
+                            max="100"
+                            placeholder="Number of people"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 DATE & TIME
+            ================================== -->
+
+            <div class="form-box">
+
+                <h3>📅 Schedule Your Service</h3>
+
+                <div class="form-row three">
+
+                    <div class="form-group">
+
+                        <label for="date">
+                            Preferred Date <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="date"
+                            id="date"
+                            name="date"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="time">
+                            Preferred Time <span class="required">*</span>
+                        </label>
+
+                        <select id="time" name="time" required>
+
+                            <option value="">
+                                -- Select Time --
+                            </option>
+
+                            <option>08:00 AM - 10:00 AM</option>
+                            <option>10:00 AM - 12:00 PM</option>
+                            <option>12:00 PM - 02:00 PM</option>
+                            <option>02:00 PM - 04:00 PM</option>
+                            <option>04:00 PM - 06:00 PM</option>
+                            <option>06:00 PM - 08:00 PM</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="frequency">
+                            Service Frequency
+                        </label>
+
+                        <select id="frequency" name="frequency">
+
+                            <option>One Time</option>
+                            <option>Daily</option>
+                            <option>Weekly</option>
+                            <option>Monthly</option>
+                            <option>Custom</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 BUDGET & PAYMENT
+            ================================== -->
+
+            <div class="form-box">
+
+                <h3>💳 Budget & Payment</h3>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="budget">
+                            Expected Budget
+                        </label>
+
+                        <select id="budget" name="budget">
+
+                            <option value="">
+                                -- Select Budget --
+                            </option>
+
+                            <option>Below ₹500</option>
+                            <option>₹500 - ₹1,000</option>
+                            <option>₹1,000 - ₹2,500</option>
+                            <option>₹2,500 - ₹5,000</option>
+                            <option>₹5,000 - ₹10,000</option>
+                            <option>Above ₹10,000</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Preferred Payment Method
+                        </label>
+
+                        <div class="options">
+
+                            <label class="option">
+
+                                <input
+                                    type="radio"
+                                    name="payment"
+                                    value="Cash"
+                                    required
+                                >
+
+                                Cash
+
+                            </label>
+
+
+                            <label class="option">
+
+                                <input
+                                    type="radio"
+                                    name="payment"
+                                    value="UPI"
+                                >
+
+                                UPI
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 ADDITIONAL INFORMATION
+            ================================== -->
+
+            <div class="form-box">
+
+                <h3>📝 Additional Information</h3>
+
+                <div class="form-group">
+
+                    <label for="instructions">
+                        Special Instructions / Requirements
+                    </label>
+
+                    <textarea
+                        id="instructions"
+                        name="instructions"
+                        placeholder="Mention any special requirements, instructions or additional information..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="reference">
+                        How did you hear about us?
+                    </label>
+
+                    <select id="reference" name="reference">
+
+                        <option value="">
+                            -- Select an option --
+                        </option>
+
+                        <option>Friend / Family</option>
+                        <option>Google</option>
+                        <option>Instagram</option>
+                        <option>Facebook</option>
+                        <option>Advertisement</option>
+                        <option>College / Institution</option>
+                        <option>Other</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 SERVICE CHARGES
+            ================================== -->
+
+            <div class="form-box">
+
+                <h3>💰 Service Charges</h3>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Sr. No.</th>
+                                <th>Service</th>
+                                <th>Starting Charges</th>
+                                <th>Pricing Type</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+                                <td>1</td>
+                                <td>Clothing / Laundry</td>
+                                <td>₹700</td>
+                                <td>Per Service</td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>Nursing / Elderly Care</td>
+                                <td>₹1,000</td>
+                                <td>Per Day</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>Catering</td>
+                                <td>₹155</td>
+                                <td>Per Plate</td>
+                            </tr>
+
+                            <tr>
+                                <td>4</td>
+                                <td>Decoration</td>
+                                <td>₹1,500</td>
+                                <td>Depending on Requirement</td>
+                            </tr>
+
+                            <tr>
+                                <td>5</td>
+                                <td>Home Cleaning</td>
+                                <td>₹800</td>
+                                <td>Per Service</td>
+                            </tr>
+
+                            <tr>
+                                <td>6</td>
+                                <td>Plumbing</td>
+                                <td>₹500</td>
+                                <td>Per Visit</td>
+                            </tr>
+
+                            <tr>
+                                <td>7</td>
+                                <td>Electrical Work</td>
+                                <td>₹500</td>
+                                <td>Per Visit</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 TERMS
+            ================================== -->
+
+            <div class="form-box">
+
+                <h3>📋 Confirmation</h3>
+
+                <div class="terms">
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        name="terms"
+                        required
+                    >
+
+                    <label for="terms">
+                        I confirm that the information provided above is
+                        correct and I agree to the household service terms
+                        and conditions.
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 BUTTONS
+            ================================== -->
+
+            <div class="button-group">
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                >
+                    Submit Booking
+                </button>
+
+
+                <button
+                    type="reset"
+                    class="reset-btn"
+                >
+                    Reset Form
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+        <!-- =================================
+             PAYMENT
+        ================================== -->
+
+        <div class="payment">
+
+            <a href="#">
+                Proceed to Payment →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         FOOTER
+    ================================== -->
+
+    <footer>
+
+        <p>
+            <strong>HomeCare Services</strong>
+        </p>
+
+        <p>
+            Professional Household Services at Your Doorstep
+        </p>
+
+        <p>
+            © 2026 HomeCare Services. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</div>
+
+</body>
+
+</html>
